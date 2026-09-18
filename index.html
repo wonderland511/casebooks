@@ -2,120 +2,190 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0B0C0F" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F5F5F7" media="(prefers-color-scheme: light)">
 <title>Кейсбуки для подготовки к кейс-интервью</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Manrope:wght@400;600;700&display=swap&subset=cyrillic" rel="stylesheet">
 <style>
   :root {
-    --bg: #EEF1F5;
-    --paper: #FFFFFF;
-    --ink: #16213A;
-    --muted: #5B6478;
-    --accent: #2F6F62;
-    --line: #D5DBE4;
-    --tab: #DCE6E2;
+    --bg: #0B0C0F;
+    --card: #15171C;
+    --card-hover: #1B1E25;
+    --ink: #F5F5F7;
+    --muted: #9BA1AE;
+    --accent: #7CC3B2;
+    --accent-ink: #0B0C0F;
+    --line: rgba(255, 255, 255, .09);
+    --shadow: 0 1px 0 rgba(255, 255, 255, .04) inset;
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #10172A; --paper: #182238; --ink: #E7ECF4; --muted: #9AA5BA;
-      --accent: #7CC3B2; --line: #2A3650; --tab: #213A3A;
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #F5F5F7;
+      --card: #FFFFFF;
+      --card-hover: #FFFFFF;
+      --ink: #1D1D1F;
+      --muted: #6E6E73;
+      --accent: #2F6F62;
+      --accent-ink: #FFFFFF;
+      --line: rgba(0, 0, 0, .08);
+      --shadow: 0 1px 2px rgba(0, 0, 0, .04), 0 8px 24px rgba(0, 0, 0, .04);
     }
   }
-  :root[data-theme="dark"] {
-    --bg: #10172A; --paper: #182238; --ink: #E7ECF4; --muted: #9AA5BA;
-    --accent: #7CC3B2; --line: #2A3650; --tab: #213A3A;
-  }
   * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
   body {
     margin: 0;
     background: var(--bg);
     color: var(--ink);
-    font-family: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: 1rem;
-    line-height: 1.6;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
   }
-  main { max-width: 44rem; margin: 0 auto; padding: 3.5rem 1.25rem 4rem; }
-  h1 {
-    font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
-    font-weight: 400;
-    font-size: clamp(2.4rem, 7vw, 3.6rem);
-    line-height: 1.05;
-    margin: 0 0 1rem;
-    letter-spacing: -0.01em;
+  main {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: max(4rem, env(safe-area-inset-top)) 1.25rem max(4rem, env(safe-area-inset-bottom));
   }
-  .lede { color: var(--muted); max-width: 36rem; margin: 0 0 2.75rem; }
-  .file {
-    position: relative;
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 0 10px 10px 10px;
-    padding: 1.5rem 1.5rem 1.4rem;
-    margin: 2.6rem 0 0;
-  }
-  .file::before {
-    content: attr(data-year);
-    position: absolute;
-    top: -1.85rem; left: -1px;
-    background: var(--tab);
+
+  .eyebrow {
     color: var(--accent);
-    border: 1px solid var(--line);
-    border-bottom: none;
-    border-radius: 8px 8px 0 0;
-    padding: 0.2rem 0.9rem;
-    font-size: 0.85rem;
-    font-weight: 700;
-  }
-  .file h2 {
-    font-family: "Instrument Serif", Georgia, serif;
-    font-weight: 400;
-    font-size: 1.9rem;
-    line-height: 1.15;
-    margin: 0 0 0.2rem;
-  }
-  .school { color: var(--muted); font-size: 0.92rem; margin: 0 0 0.9rem; }
-  .file p.desc { margin: 0 0 1.2rem; }
-  .open {
-    display: inline-block;
-    background: var(--accent);
-    color: var(--paper);
-    text-decoration: none;
+    font-size: .8125rem;
     font-weight: 600;
-    padding: 0.6rem 1.1rem;
-    border-radius: 6px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin: 0 0 1rem;
   }
-  .open:hover { filter: brightness(1.08); }
-  .open:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
-  footer { margin-top: 3rem; color: var(--muted); font-size: 0.88rem; }
-  footer a { color: var(--accent); }
+  h1 {
+    font-size: clamp(2.25rem, 8vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.06;
+    letter-spacing: -.02em;
+    margin: 0 0 1.25rem;
+    text-wrap: balance;
+  }
+  .lede {
+    color: var(--muted);
+    font-size: 1.125rem;
+    line-height: 1.5;
+    margin: 0 0 3rem;
+    max-width: 34rem;
+  }
+
+  .list { display: grid; gap: .875rem; }
+  .card {
+    display: block;
+    position: relative;
+    min-height: 84px;
+    padding: 1.5rem 1.5rem 1.35rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+    color: inherit;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color .25s ease, border-color .25s ease, transform .25s ease;
+    animation: fadeInUp .6s ease-out both;
+  }
+  .card:nth-child(2) { animation-delay: .08s; }
+  .card:nth-child(3) { animation-delay: .16s; }
+  .card:hover { background: var(--card-hover); border-color: var(--accent); }
+  .card:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin-bottom: .9rem;
+    font-size: .8125rem;
+    font-weight: 600;
+    color: var(--muted);
+  }
+  .year {
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 14%, transparent);
+    border-radius: 999px;
+    padding: .15rem .65rem;
+  }
+  .card h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -.02em;
+    margin: 0 0 .15rem;
+  }
+  .school { color: var(--muted); font-size: .9375rem; margin: 0 0 .9rem; }
+  .desc { margin: 0 0 1.4rem; }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    min-height: 48px;
+    padding: 0 1.25rem;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 600;
+    border-radius: 999px;
+  }
+  .cta svg { width: 1rem; height: 1rem; transition: transform .25s ease; }
+  .card:hover .cta svg { transform: translate(2px, -2px); }
+
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: .9rem;
+    animation: fadeInUp .6s ease-out .24s both;
+  }
+  footer a { color: var(--accent); text-underline-offset: 3px; }
+  footer a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @media (hover: hover) { .card:hover { transform: translateY(-2px); } }
+  @media (prefers-reduced-motion: reduce) {
+    .card, footer { animation: none; opacity: 1; transform: none; }
+    .card, .cta svg { transition: none; }
+    .card:hover { transform: none; }
+  }
 </style>
 </head>
 <body>
 <main>
-  <h1>Три кейсбука для тренировки кейс-интервью</h1>
+  <p class="eyebrow">Кейс-интервью</p>
+  <h1>Три кейсбука для тренировки</h1>
   <p class="lede">Сборники кейсов консалтинговых клубов MBA-школ. У каждого кейса есть вводная для кандидата и заметки для ведущего с данными и графиками, поэтому их удобно проходить вдвоём. Все файлы бесплатные, на английском.</p>
 
-  <section class="file" data-year="2020">
-    <h2>MIT Sloan</h2>
-    <p class="school">Массачусетский технологический институт</p>
-    <p class="desc">Самый объёмный и реалистичный: больше 60 кейсов с пометкой, в какой фирме они давались, и больше всего математики. Берите, когда нужны объём практики и сложные расчёты.</p>
-    <a class="open" href="https://files.cdn.thinkific.com/file_uploads/163260/attachments/918/daf/18c/Sloan_2020.pdf" target="_blank" rel="noopener">Открыть PDF</a>
-  </section>
+  <div class="list">
+    <a class="card" href="https://files.cdn.thinkific.com/file_uploads/163260/attachments/918/daf/18c/Sloan_2020.pdf" target="_blank" rel="noopener">
+      <div class="meta"><span class="year">2020</span><span>PDF · English</span></div>
+      <h2>MIT Sloan</h2>
+      <p class="school">Массачусетский технологический институт</p>
+      <p class="desc">Самый объёмный и реалистичный: больше 60 кейсов с пометкой, в какой фирме они давались, и больше всего математики. Берите, когда нужны объём практики и сложные расчёты.</p>
+      <span class="cta">Открыть PDF <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></span>
+    </a>
 
-  <section class="file" data-year="2020">
-    <h2>Kellogg</h2>
-    <p class="school">Northwestern University</p>
-    <p class="desc">Лучше всех выстроен как программа: кейсы идут по нарастанию сложности и разложены по календарю подготовки. Хорош, чтобы идти по порядку от лёгкого к сложному.</p>
-    <a class="open" href="https://files.cdn.thinkific.com/file_uploads/163260/attachments/bf2/d90/0c4/Kellogg_2020.pdf" target="_blank" rel="noopener">Открыть PDF</a>
-  </section>
+    <a class="card" href="https://files.cdn.thinkific.com/file_uploads/163260/attachments/bf2/d90/0c4/Kellogg_2020.pdf" target="_blank" rel="noopener">
+      <div class="meta"><span class="year">2020</span><span>PDF · English</span></div>
+      <h2>Kellogg</h2>
+      <p class="school">Northwestern University</p>
+      <p class="desc">Лучше всех выстроен как программа: кейсы идут по нарастанию сложности и разложены по календарю подготовки. Хорош, чтобы идти по порядку от лёгкого к сложному.</p>
+      <span class="cta">Открыть PDF <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></span>
+    </a>
 
-  <section class="file" data-year="2013">
-    <h2>Yale</h2>
-    <p class="school">Yale School of Management</p>
-    <p class="desc">Классика, из которой заимствуют более поздние сборники. Особенно хорош для кейсов на прибыльность, выход на рынок и оценку размера рынка.</p>
-    <a class="open" href="https://s3.amazonaws.com/thinkific/file_uploads/163260/attachments/219/c95/660/Yale_2013.pdf" target="_blank" rel="noopener">Открыть PDF</a>
-  </section>
+    <a class="card" href="https://s3.amazonaws.com/thinkific/file_uploads/163260/attachments/219/c95/660/Yale_2013.pdf" target="_blank" rel="noopener">
+      <div class="meta"><span class="year">2013</span><span>PDF · English</span></div>
+      <h2>Yale</h2>
+      <p class="school">Yale School of Management</p>
+      <p class="desc">Классика, из которой заимствуют более поздние сборники. Особенно хорош для кейсов на прибыльность, выход на рынок и оценку размера рынка.</p>
+      <span class="cta">Открыть PDF <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></span>
+    </a>
+  </div>
 
   <footer>
     Подборка и ссылки: <a href="https://www.hackingthecaseinterview.com/pages/mba-consulting-casebooks" target="_blank" rel="noopener">Hacking the Case Interview</a>. Официальные кейсы также есть на сайтах
@@ -124,5 +194,23 @@
     <a href="https://www.bain.com/careers/hiring-process/case-interview/" target="_blank" rel="noopener">Bain</a>.
   </footer>
 </main>
+
+<script type="module">
+  // Framer Motion (motion) — только необязательные эффекты нажатия.
+  // Видимость контента от скрипта не зависит: появление сделано на CSS.
+  (async () => {
+    try {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const { animate } = await import("https://cdn.jsdelivr.net/npm/motion@11/+esm");
+      const spring = { type: "spring", stiffness: 500, damping: 30 };
+      document.querySelectorAll(".card").forEach((card) => {
+        card.addEventListener("pointerdown", () => animate(card, { scale: 0.98 }, spring));
+        ["pointerup", "pointerleave", "pointercancel"].forEach((ev) =>
+          card.addEventListener(ev, () => animate(card, { scale: 1 }, spring))
+        );
+      });
+    } catch (e) { /* без motion страница работает так же */ }
+  })();
+</script>
 </body>
 </html>
