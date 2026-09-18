@@ -89,8 +89,8 @@
     transition: background-color .25s ease, border-color .25s ease, transform .25s ease;
     animation: fadeInUp .6s ease-out both;
   }
-  .card:nth-child(2) { animation-delay: .08s; }
-  .card:nth-child(3) { animation-delay: .16s; }
+  a.card:nth-of-type(2) { animation-delay: .08s; }
+  a.card:nth-of-type(3) { animation-delay: .16s; }
   .card:hover { background: var(--card-hover); border-color: var(--accent); }
   .card:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 
@@ -131,6 +131,23 @@
   }
   .cta svg { width: 1rem; height: 1rem; transition: transform .25s ease; }
   .card:hover .cta svg { transform: translate(2px, -2px); }
+
+  .cat {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1.25rem;
+    margin: -.25rem 0;
+    pointer-events: none;
+  }
+  .cat img {
+    display: block;
+    width: 112px;
+    height: 112px;
+    transform: rotate(-6deg);
+    transform-origin: 50% 90%;
+    pointer-events: auto;
+    -webkit-tap-highlight-color: transparent;
+  }
 
   footer {
     margin-top: 3rem;
@@ -178,6 +195,10 @@
       <span class="cta">Открыть PDF <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></span>
     </a>
 
+    <!-- Стикер: Wikipedia iOS Sticker «CatLaptop», Wikimedia Foundation, лицензия MIT
+         (Wikimedia Commons: File:Wikipedia iOS Sticker - CatLaptop 2.gif) -->
+    <div class="cat"><img src="cat-laptop.gif" width="112" height="112" alt="Смешной котик печатает на ноутбуке" loading="lazy"></div>
+
     <a class="card" href="https://s3.amazonaws.com/thinkific/file_uploads/163260/attachments/219/c95/660/Yale_2013.pdf" target="_blank" rel="noopener">
       <div class="meta"><span class="year">2013</span><span>PDF · English</span></div>
       <h2>Yale</h2>
@@ -203,6 +224,12 @@
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
       const { animate } = await import("https://cdn.jsdelivr.net/npm/motion@11/+esm");
       const spring = { type: "spring", stiffness: 500, damping: 30 };
+      const cat = document.querySelector(".cat img");
+      if (cat) {
+        const wiggle = () => animate(cat, { rotate: [-6, 8, -10, 6, -6] }, { duration: 0.6 });
+        cat.addEventListener("pointerenter", wiggle);
+        cat.addEventListener("pointerdown", wiggle);
+      }
       document.querySelectorAll(".card").forEach((card) => {
         card.addEventListener("pointerdown", () => animate(card, { scale: 0.98 }, spring));
         ["pointerup", "pointerleave", "pointercancel"].forEach((ev) =>
